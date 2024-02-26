@@ -50,7 +50,7 @@ df1[numerical_columns] = df1[numerical_columns].fillna(df1[numerical_columns].me
 categorical_columns = df1.select_dtypes(include=['object']).columns
 df1[categorical_columns] = df1[categorical_columns].fillna(df1[categorical_columns].mode().iloc[0])
 
-# print(df1.info())
+print(df1.info())
 
 numeric_summary = df1.describe()
 
