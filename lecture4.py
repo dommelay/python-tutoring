@@ -6,6 +6,8 @@ import seaborn as sns
 #1
 df = pd.read_csv('/Users/dominiqueclark/ENGINEER/python_projects/python-tutoring/Inequality in Income 2 (1).csv')
 
+
+
 #2
 #first few rows
 # print(df['Human Development Groups'])
@@ -63,23 +65,14 @@ average_inequality_by_continent = df1.groupby('Continent')[['Inequality in incom
 grouped_data = df1.groupby('Continent')
 aggregate_data_mean = grouped_data[[f'Inequality in income ({year})' for year in range(2010, 2022)]].mean()
 
-
 average_inequality_by_continent = df1.groupby('Continent')[[f'Inequality in income ({year})' for year in range(2010, 2022)]].mean().mean(axis=1)
 
 plt.figure()
 sns.barplot(x=average_inequality_by_continent.index, y=average_inequality_by_continent.values)
 plt.title('Average Inequality Distribution by Continent')
-plt.xlabel('Average Inequality')
+plt.xlabel('Continent')
 plt.ylabel('Level of Inequality')
 # plt.show()
-
-# plt.figure()
-# sns.scatterplot(x='Income', y='Education Level', data=df1)
-# plt.title('Income vs. Education Level')
-# plt.xlabel('Income')
-# plt.ylabel('Education Level')
-# plt.show()
-
 
 plt.figure()
 df2 = average_inequality_by_continent.index
