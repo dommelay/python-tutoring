@@ -7,6 +7,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score, mean_squared_error
 import statsmodels.api as sm
 
+#env myenv
+
 # Data Import and Initial Exploration (50 points):
 df = pd.read_csv('/Users/dominiqueclark/ENGINEER/python_projects/python-tutoring/housing-1.csv')
 
