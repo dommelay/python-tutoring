@@ -6,6 +6,8 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score, mean_squared_error
 import statsmodels.api as sm
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+
 
 #env myenv
 
@@ -65,37 +67,59 @@ corr_matrix = df1.corr()
 plt.figure(figsize=(12, 8))
 sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt=".2f", linewidths=0.5)
 plt.title('Correlation Matrix')
-plt.show()
+# plt.show()
 
 # Simple Linear Regression (50 points):
-X = df[['median_income']]  # Feature
-y = df['median_house_value']  # Target
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-model = LinearRegression()
-model.fit(X_train, y_train)
-plt.figure(figsize=(10, 6))
-plt.scatter(X_train, y_train, color='blue', label='Training Data')
-plt.scatter(X_test, y_test, color='green', label='Testing Data')
-plt.plot(X_train, model.predict(X_train), color='red', linewidth=2, label='Regression Line')
-plt.title('Linear Regression')
-plt.xlabel('Median Income')
-plt.ylabel('Median House Value')
-plt.legend()
-plt.grid(True)
-plt.show()
+# X = df[['median_income']]  # Feature
+# y = df['median_house_value']  # Target
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# model = LinearRegression()
+# model.fit(X_train, y_train)
+# plt.figure(figsize=(10, 6))
+# plt.scatter(X_train, y_train, color='blue', label='Training Data')
+# plt.scatter(X_test, y_test, color='green', label='Testing Data')
+# plt.plot(X_train, model.predict(X_train), color='red', linewidth=2, label='Regression Line')
+# plt.title('Linear Regression')
+# plt.xlabel('Median Income')
+# plt.ylabel('Median House Value')
+# plt.legend()
+# plt.grid(True)
+# plt.show()
 
-print("Intercept:", model.intercept_)
-print("Coefficient:", model.coef_[0])
+# print("Intercept:", model.intercept_)
+# print("Coefficient:", model.coef_[0])
 
 # Model Evaluation for Simple Linear Regression (25 points):
-y_pred = model.predict(X_test)
-r_squared = r2_score(y_test, y_pred)
-rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+# y_pred = model.predict(X_test)
+# r_squared = r2_score(y_test, y_pred)
+# rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 
-print("R-squared:", r_squared)
-print("RMSE:", rmse)
+# print("R-squared:", r_squared)
+# print("RMSE:", rmse)
 
 # Using statsmodels.api for Statistical Metrics (25 points):
-X = sm.add_constant(X)
-model = sm.OLS(y, X).fit()
-print(model.summary())
+# X = sm.add_constant(X)
+# model = sm.OLS(y, X).fit()
+# print(model.summary())
+
+#Multiple Linear Regressions
+# X = df.drop(columns=['median_house_value'])  # Features
+# y = df['median_house_value']  # Target
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# model = LinearRegression()
+# model.fit(X_train, y_train)
+
+# y_pred = model.predict(X_test)
+# r_squared = r2_score(y_test, y_pred)
+# rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+
+# print("R-squared:", r_squared)
+# print("RMSE:", rmse)
+
+# vif_data = pd.DataFrame()
+# vif_data["feature"] = X.columns
+# vif_data["VIF"] = [variance_inflation_factor(X.values, i) for i in range(len(X.columns))]
+# print(vif_data)
+
+print(df.info())
