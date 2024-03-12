@@ -9,7 +9,7 @@ class A:
         A.x += 1
 # print(A.x) # 0
 # print(A.y) # 7
-# a1 = A(3)
+a1 = A(3)
 # print(a1.x) # 3
 # print(A.x) # 1, incremented once
 A.y = 9
@@ -21,13 +21,13 @@ class A:
     x = 0
     def __init__(self, a):
         self.x = a
-        x = A.x + 1  
-        # x is a local variable
+        x = A.x + 1 # x is a local variable
         # print(x) # 1
 a2 = A(7)
 # print(a2.x, A.x) # 7, 0
-
-
+a3 = A(9)
+# print(a3.x) 
+# print(A.x)
 
 # EXAMPLE: UNIVERSITY, PROFESSOR, STUDENT, COOURSE ------------------------------------------------
 class University:
@@ -141,10 +141,10 @@ def example(usc):
 # print(usc.student_dict['1287654390'].courses[0].students[1].get_full_name()) # Mary Davis
 # print(mary.get_full_name(), mary) # Mary Davis <__main__.Student object at 0x1006be760>
 # print("- mary's courses:", mary.courses) # - mary's courses: [<__main__.Course object at 0x1006be8e0>, <__main__.Course object at 0x1006be880>]
-# for c in mary.courses:
-#     print('-- course:', c.course_name, c)
-#     print('--- profs:', c.professors)
-#     for p in c.professors:
+# for course in mary.courses:
+#     print('-- course:', course.course_name, course)
+#     print('--- profs:', course.professors)
+#     for p in course.professors:
 #         print('---- prof:', p.get_full_name(), p)
 # print(mary.courses[0].professors[0].get_full_name())
 
